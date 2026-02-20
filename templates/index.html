@@ -24,64 +24,24 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
+                    {%for alumn in alumno %}
                     <tr class="hover:bg-gray-50 transition-colors">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Mario Juan
+                           {{ alumn.nombre }}
                         </th>
-                        <td class="px-6 py-4 text-center">Lopez</td>
-                        <td class="px-6 py-4 text-center">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">lopez@gmail.com</span>
-                        </td>
+                        <td class="px-6 py-4 text-center">{{ alumn.apaterno }}</td>
+                        <td class="px-6 py-4 text-center">{{ alumn.email }}</td>
                         <td class="px-6 py-4 text-center font-semibold text-gray-900">
                             <button type="button" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">Editar</button>
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <button type="button" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</button>                        
+                            <a href="detalles?id={{alumn.id}}" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</a>                        
                         </td>
                         <td class="px-6 py-4 text-right">
                             <button type="button" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</button>                        
                         </td>
                     </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Juan
-                        </th>
-                        <td class="px-6 py-4 text-center">
-                            Ramirez
-                        </td>
-                        <td class="px-6 py-4 text-center">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">ramirez@gmail.com</span>
-                        </td>
-                        <td class="px-6 py-4 text-center font-semibold text-gray-900">
-                            <button type="button" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">Editar</button>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <button type="button" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</button>                        
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <button type="button" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</button>                        
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Guadalupe Venorica
-                        </th>
-                        <td class="px-6 py-4 text-center">
-                          Macias
-                        </td>
-                        <td class="px-6 py-4 text-center">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">iperez@utleon.edu.mx</span>
-                        </td>
-                        <td class="px-6 py-4 text-center font-semibold text-gray-900">
-                            <button type="button" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">Editar</button>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <button type="button" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</button>                        
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <button type="button" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</button>                        
-                        </td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
