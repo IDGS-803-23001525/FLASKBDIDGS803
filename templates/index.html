@@ -16,8 +16,9 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
                     <tr>
                         <th scope="col" class="px-6 py-4 font-semibold">NOMBRE</th>
-                        <th scope="col" class="px-6 py-4 font-semibold text-center">APATERNO</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-center">APELLIDOS</th>
                         <th scope="col" class="px-6 py-4 font-semibold text-center">CORREO</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-center">TELEFONO</th>
                         <th scope="col" class="px-6 py-4 font-semibold text-center">EDITAR</th>
                         <th scope="col" class="px-6 py-4 font-semibold text-right">DETALLES</th>
                         <th scope="col" class="px-6 py-4 font-semibold text-right">ELIMINAR</th>
@@ -29,8 +30,9 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                            {{ alumn.nombre }}
                         </th>
-                        <td class="px-6 py-4 text-center">{{ alumn.apaterno }}</td>
+                        <td class="px-6 py-4 text-center">{{ alumn.apellidos }}</td>
                         <td class="px-6 py-4 text-center">{{ alumn.email }}</td>
+                         <td class="px-6 py-4 text-center">{{ alumn.telefono }}</td>
 
                         <td class="px-6 py-4 text-center font-semibold text-gray-900">
                              <a href="modificar?id={{alumn.id}}" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">Editar</a>
