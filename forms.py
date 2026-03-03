@@ -18,3 +18,20 @@ class UserForm(Form):
     telefono = StringField('telefono', [
         validators.DataRequired(message='El teléfono es requerido')
         ])
+
+class MaestrosForm(Form):
+    matricula=IntegerField('id')
+    nombre=StringField('Nombre',[
+        validators.DataRequired(message='El campo es requerido'),
+        validators.length(min=4,max=10,message='Ingrese nombre valido')
+        ])
+    apellidos=StringField('Apellidos',[
+        validators.DataRequired(message='El campo es requerido')
+        ])
+    especialidad = StringField('especialidad', [
+        validators.DataRequired(message='La especialidad es requerido')
+        ])
+    email=EmailField('Correo',[
+        validators.Email(message='Ingrese un correo valido')
+        ])
+    

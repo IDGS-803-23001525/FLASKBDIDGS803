@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="p-6">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+        <div>
+            <a href="Maestro" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg transition-colors shadow-sm">
+                Maestros
+            </a>
+        </div>
+    </div>
+    <br>
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                    <tr>
+                        <th scope="col" class="px-6 py-4 font-semibold">NOMBRE</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-center">APELLIDOS</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-center">ESPECIALIDAD</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-center">CORREO</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-center">EDITAR</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-right">DETALLES</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-right">ELIMINAR</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    {%for maes in maestros %}
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                           {{ maes.nombre }}
+                        </th>
+                        <td class="px-6 py-4 text-center">{{ maes.apellidos }}</td>
+                        <td class="px-6 py-4 text-center">{{ maes.especialidad }}</td>
+                         <td class="px-6 py-4 text-center">{{ maes.email }}</td>
+
+                        <td class="px-6 py-4 text-center font-semibold text-gray-900">
+                             <a href="modificarMaestro?id={{maes.matricula}}" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">Editar</a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="detallesMaestro?id={{maes.matricula}}" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</a>                        
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="eliminarMaestro?id={{maes.matricula}}" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</a>                        
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+            <p class="text-xs text-gray-400">Mostrando {{ lista|length }} resultados</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
