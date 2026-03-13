@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="p-6 max-w-4xl mx-auto">
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 mb-8">
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Buscador de Cursos por Alumno</h2>
+            <p class="text-sm text-gray-500">Selecciona un alumno de la lista para ver su historial</p>
+        </div>
+
+        <form action="" method="POST" class="flex gap-3">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="relative flex-grow">
+                <select name="alumno_id" required
+                    class="block w-full px-4 py-3 text-sm text-gray-900 border border-gray-300 rounded-xl bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500 appearance-none">
+                    <option value="" disabled selected>Selecciona un alumno...</option>
+                    {% for a in alumnos_list %}
+                        <option value="{{ a.id }}" {% if alumno and alumno.id == a.id %} selected {% endif %}>
+                            {{ a.nombre }} {{ a.apellidos }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                </div>
+            </div>
+            <button type="submit" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-xl transition-all shadow-md">
+                Consultar
+            </button>
+        </form>
+    </div>
+
+    {% if busqueda_realizada %}
+        {% if alumno %}
+            <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden animate-fade-in">
+                <div class="p-6 bg-indigo-50 border-b border-gray-200">
+                    <h3 class="text-lg font-bold text-indigo-900">
+                        Cursos inscritos de: <span class="text-gray-800">{{ alumno.nombre }} {{ alumno.apellidos }}</span>
+                    </h3>
+                    <p class="text-xs text-indigo-600 uppercase font-semibold mt-1">Correo: {{ alumno.email }}</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 font-bold">NOMBRE DEL CURSO</th>
+                                <th class="px-6 py-4 font-bold text-center">DESCRIPCIÓN</th>
+                                <th class="px-6 py-4 font-bold text-right">MAESTRO</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            {% for curso in cursos %}
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900">{{ curso.nombre }}</td>
+                                <td class="px-6 py-4 text-center text-gray-600">{{ curso.descripcion }}</td>
+                                <td class="px-6 py-4 text-right">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-lg">
+                                        {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="3" class="px-6 py-8 text-center text-gray-400 italic">
+                                    Este alumno no tiene cursos inscritos actualmente.
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+{% endblock %}

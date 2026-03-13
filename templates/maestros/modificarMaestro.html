@@ -3,7 +3,7 @@
 {% import "_macros.html" as macros %}
 
     <form action="" method="POST" novalidate class="mt-8 space-y-6">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       {{ form.csrf_token }}
       
       <div class="rounded-md shadow-sm space-y-4">

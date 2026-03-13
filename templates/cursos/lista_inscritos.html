@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block container %}
+<div class="p-6">
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Alumnos inscritos en: {{ curso.nombre }}</h2>
+        <p class="text-gray-600">{{ curso.descripcion }}</p>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th class="px-6 py-4">Matricula</th>
+                    <th class="px-6 py-4">Nombre Completo</th>
+                    <th class="px-6 py-4">Correo Electrónico</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                {% for alumno in alumnos %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4">{{ alumno.id }}</td>
+                    <td class="px-6 py-4">{{ alumno.nombre }} {{ alumno.apellidos }}</td>
+                    <td class="px-6 py-4">{{ alumno.email }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" class="px-6 py-10 text-center text-gray-400">
+                        No hay alumnos inscritos en este curso todavía.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="mt-6">
+        <a href="{{ url_for('cursos.index') }}" class="flex items-center justify-center w-full px-4 py-3 text-sm font-bold text-white bg-gray-800 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-sm">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg> Volver a la lista de cursos</a>
+    </div>
+</div>
+{% endblock %}

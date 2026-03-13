@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="p-6">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800">Listado de Cursos</h2>
+            <p class="text-sm text-gray-500">Gestión de materias y asignaciones</p>
+        </div>
+        <div class="flex gap-3">
+            <a href="{{ url_for('cursos.agregar_curso') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg transition-colors shadow-sm">
+
+                Agregar Curso
+            </a>
+        </div>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                    <tr>
+                        <th class="px-6 py-4 font-bold">CURSO</th>
+                        <th class="px-6 py-4 font-bold text-center">DESCRIPCIÓN</th>
+                        <th class="px-6 py-4 font-bold text-center">MAESTRO</th>
+                        <th class="px-6 py-4 font-bold text-center">EDITAR</th>
+                        <th class="px-6 py-4 font-bold text-center">DETALLES</th>
+                        <th class="px-6 py-4 font-bold text-center">ELIMINAR</th>
+                        <th class="px-6 py-4 font-bold text-center">ALUMNOS</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    {% for cur in curso %}
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <th class="px-6 py-4 font-semibold text-gray-900">
+                           {{ cur.nombre }}
+                        </th>
+                        <td class="px-6 py-4 text-center">{{ cur.descripcion }}</td>
+                        <td class="px-6 py-4 text-center">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-lg">
+                                {{ cur.maestro.nombre }} {{ cur.maestro.apellidos }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                                <a href="{{ url_for('cursos.modificar', id=cur.id) }}" 
+                                    class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">                                   
+                                    Editar
+                                </a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                                <a href="{{ url_for('cursos.detalles', id=cur.id) }}" 
+                                   class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">                        
+                                   Detalles
+                                </a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                                <a href="{{ url_for('cursos.eliminar', id=cur.id) }}" 
+                                  class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                                   Eliminar
+                                </a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                                <a href="{{ url_for('cursos.consultar_inscritos', id=cur.id) }}" 
+                                   class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">                        
+                                   Alumnos
+                                </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

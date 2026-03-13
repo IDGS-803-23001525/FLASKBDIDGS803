@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block container %}
+{% import "_macros.html" as macros %}
+
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+  <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg border border-red-100">
+    
+    <div class="text-center">
+      <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+        <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+      </div>
+      <h2 class="text-3xl font-extrabold text-gray-900">Eliminar Curso</h2>
+      <p class="mt-2 text-sm text-gray-600 italic">¿Estás seguro de que deseas eliminar este registro?</p>
+    </div>
+
+    <form action="" method="POST" novalidate class="mt-8 space-y-6">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      {{ form.csrf_token }}
+      
+      <div class="rounded-md shadow-sm space-y-4 opacity-75">
+        <div>
+          <label class="block text-xs font-semibold text-gray-400 uppercase mb-1">ID del Curso</label>
+          {{ macros.camposNuevos(form.id, class="appearance-none relative block w-full px-3 py-3 border border-gray-200 bg-gray-50 text-gray-500 rounded-lg sm:text-sm", readonly=True) }}
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-400 uppercase mb-1">Nombre del Curso</label>
+          {{ macros.camposNuevos(form.nombre, class="appearance-none relative block w-full px-3 py-3 border border-gray-200 bg-gray-50 text-gray-500 rounded-lg sm:text-sm", readonly=True) }}
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-400 uppercase mb-1">Descripción</label>
+          {{ macros.camposNuevos(form.descripcion, class="appearance-none relative block w-full px-3 py-3 border border-gray-200 bg-gray-50 text-gray-500 rounded-lg sm:text-sm", readonly=True) }}
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 mt-6">
+        <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200 shadow-md">
+          Confirmar y Eliminar Curso
+        </button>
+        
+        <a href="{{ url_for('cursos.index') }}" class="w-full text-center py-3 px-4 text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+          Cancelar y Regresar
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

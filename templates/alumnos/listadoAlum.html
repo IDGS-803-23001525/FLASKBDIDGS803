@@ -4,12 +4,12 @@
 <div class="p-6">
      <div class="flex justify-between items-center mb-6">
         <div>
-            <h2 class="text-2xl font-bold text-gray-800">Listado de Maestros</h2>
-            <p class="text-sm text-gray-500">Gestión de maestros</p>
+            <h2 class="text-2xl font-bold text-gray-800">Listado de Alumnos</h2>
+            <p class="text-sm text-gray-500">Gestión de alumnos</p>
         </div>
         <div class="flex gap-3">
-            <a href="Maestro" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg transition-colors shadow-sm">
-                Agregar Maestro
+            <a href="Alumnos" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg transition-colors shadow-sm">
+                Agregar Alumno
             </a>
         </div>
     </div>
@@ -21,31 +21,30 @@
                     <tr>
                         <th scope="col" class="px-6 py-4 font-semibold">NOMBRE</th>
                         <th scope="col" class="px-6 py-4 font-semibold text-center">APELLIDOS</th>
-                        <th scope="col" class="px-6 py-4 font-semibold text-center">ESPECIALIDAD</th>
                         <th scope="col" class="px-6 py-4 font-semibold text-center">CORREO</th>
+                        <th scope="col" class="px-6 py-4 font-semibold text-center">TELEFONO</th>
                         <th scope="col" class="px-6 py-4 font-semibold text-center">EDITAR</th>
                         <th scope="col" class="px-6 py-4 font-semibold text-right">DETALLES</th>
-                        <th scope="col" class="px-6 py-4 font-semibold text-right">ELIMINAR</th>
-                    </tr>
+                        <th scope="col" class="px-6 py-4 font-semibold text-right">ELIMINAR</th>                    </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    {%for maes in maestros %}
+                    {%for alumn in alumno %}
                     <tr class="hover:bg-gray-50 transition-colors">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                           {{ maes.nombre }}
+                           {{ alumn.nombre }}
                         </th>
-                        <td class="px-6 py-4 text-center">{{ maes.apellidos }}</td>
-                        <td class="px-6 py-4 text-center">{{ maes.especialidad }}</td>
-                         <td class="px-6 py-4 text-center">{{ maes.email }}</td>
+                        <td class="px-6 py-4 text-center">{{ alumn.apellidos }}</td>
+                        <td class="px-6 py-4 text-center">{{ alumn.email }}</td>
+                         <td class="px-6 py-4 text-center">{{ alumn.telefono }}</td>
 
                         <td class="px-6 py-4 text-center font-semibold text-gray-900">
-                             <a href="modificarMaestro?id={{maes.matricula}}" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">Editar</a>
+                             <a href="modificar?id={{alumn.id}}" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">Editar</a>
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="detallesMaestro?id={{maes.matricula}}" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</a>                        
+                            <a href="detalles?id={{alumn.id}}" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</a>                        
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="eliminarMaestro?id={{maes.matricula}}" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</a>                        
+                            <a href="eliminar?id={{alumn.id}}" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</a>                        
                         </td>
                     </tr>
                     {% endfor %}
